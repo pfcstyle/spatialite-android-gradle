@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.spatialite1"
+        minSdkVersion 15
+        targetSdkVersion 15
+
+        testApplicationId "com.spatialite.test"
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile project(':spatialiteandroidlibrary')
+    compile files('libs/jts-1.12.jar')
+}
